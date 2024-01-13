@@ -12,6 +12,3 @@ golang:
 
 secrets:
   - "**/*encrypted.yaml"
-
-ArgoCD:
-  - "**/*.yaml"
