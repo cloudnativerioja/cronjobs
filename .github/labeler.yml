@@ -1,0 +1,17 @@
+ci/cd:
+  - .github/workflows/*
+
+infrastructure:
+  - "**/*.tf"
+
+documentation:
+  - "**/*.md"
+
+golang:
+  - "**/*.go"
+
+secrets:
+  - "**/*encrypted.yaml"
+
+ArgoCD:
+  - "**/*.yaml"
