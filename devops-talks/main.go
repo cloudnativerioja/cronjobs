@@ -42,7 +42,7 @@ func main() {
 	msgText += "   - Pipelines de CI/CD\n"
 	msgText += "   - Infraestructura como Código (IaC)\n"
 	msgText += "   - Contenerización (Docker, Kubernetes)\n"
-	msgText += "   - Monitoreo y Registro\n"
+	msgText += "   - Observabilidad\n"
 	msgText += "   - Colaboración entre equipos de Desarrollo y Operaciones\n\n"
 	msgText += "📍 **Ubicación**: Virtual\n\n"
 	msgText += "🕕 **Hora**: 19:30 PM - 20:30 PM\n\n"
@@ -51,6 +51,7 @@ func main() {
 	msgText += "   - Profesionales de Operaciones\n"
 	msgText += "   - ¡Cualquier persona interesada en DevOps!\n\n"
 	msgText += "📢 **¡Corre la voz!** Trae a tus colegas y amigos.\n\n"
+	msgText += "📝 **Regístrate**: [https://community.cncf.io/cloud-native-rioja/]\n\n"
 	msgText += "📧 **Contáctanos para más información**: [cloudnativerioja@gmail.com]\n"
 
 	// Create a message config with Markdown formatting
