@@ -1,0 +1,52 @@
+name: Send Telegram Message
+
+on:
+  schedule:
+    - cron: "0 12 * * 3" # Run every Wednesday at 12:00 PM UTC
+
+jobs:
+  send-telegram-message:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.20"
+          path: ${{ github.workspace }}/devops-talks
+
+      - name: Set up workspace
+        run: |
+          mkdir -p $GOPATH/src/github.com/${{ github.repository_owner }}
+          mv ${{ github.workspace }}/* $GOPATH/src/github.com/${{ github.repository_owner }}
+          cd $GOPATH/src/github.com/${{ github.repository_owner }}/*
+
+      - name: Install dependencies
+        run: |
+          go get -v ./...
+
+      - name: Check if today is the last Wednesday of the month
+        run: |
+          lastWednesday() {
+            current_day=$(date +"%u")
+            if [ "$current_day" -eq 3 ]; then  # Check if today is Wednesday
+              last_day_of_month=$(date -d "$(date +'%Y-%m-01') +1 month -1 day" +"%d")
+              current_day_of_month=$(date +"%d")
+              if [ "$current_day_of_month" -ge "$last_day_of_month" ]; then
+                echo "::set-output name=run_workflow::true"
+              fi
+            fi
+          }
+
+          lastWednesday
+
+      - name: Send Telegram Message
+        if: steps.check.outputs.run_workflow == 'true'
+        run: |
+          go run main.go
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
