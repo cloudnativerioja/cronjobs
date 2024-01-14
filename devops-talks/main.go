@@ -35,7 +35,7 @@ func main() {
 	}
 
 	// Create a message config with Markdown formatting
-	msgText := "🚀 **DevOps Talks en La Rioja** 🚀\n\n"
+	msgText := "🚀 **[DevOps Talks](https://docs.cloudnativerioja.com/recursos/assets/devops-talks.jpg) en La Rioja** 🚀\n\n"
 	msgText += "Únete a nosotros en la reunión de DevOps por excelencia en La Rioja.\n\n"
 	msgText += "📅 Guarda la fecha: El último miércoles de cada mes.\n\n"
 	msgText += "🗣️ **Temas**:\n"
