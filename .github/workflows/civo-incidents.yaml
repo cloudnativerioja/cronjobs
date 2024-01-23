@@ -1,0 +1,26 @@
+name: Check Civo Incidents
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # Run every 10 minutes
+
+jobs:
+  check-incidents:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: "1.20"
+
+      - name: Run Golang script
+        run: |
+          cd ./civo-incidents
+          go run main.go
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID_ADMIN: ${{ secrets.CHAT_ID_ADMIN }}
