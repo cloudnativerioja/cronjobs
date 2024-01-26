@@ -1,9 +1,9 @@
-name: Send Telegram Message
+name: Send DevOps Talks Message
 
 on:
   schedule:
-    - cron: "0 10 * * 3" # Run every Wednesday at 12:00 PM UTC
-
+    - cron: "0 10 * * 3" # Run every Wednesday at 1:00 PM UTC
+0
 jobs:
   send-telegram-message:
     runs-on: ubuntu-latest
