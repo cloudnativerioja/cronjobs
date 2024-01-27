@@ -2,7 +2,7 @@ name: Check Civo Incidents
 
 on:
   schedule:
-    - cron: "*/10 * * * *" # Run every 10 minutes
+    - cron: "*/45 * * * *" # Run every 45 minutes
 
 jobs:
   check-incidents:
